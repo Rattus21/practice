@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Киберспортивный турнир</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #252525;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 50px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 40px;
+        }
+        p {
+            font-size: 20px;
+        }
+        a {
+            color: #FFD700;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #333;
+            color: #fff;
+            font-size: 20px;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: center;
+        }
+        img {
+            width: 1800px;
+            height: 900px;
+        }
+        form {
+            background-color: #444;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #FFD700;
+            color: #222;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://avatars.mds.yandex.net/i?id=c511408013cd0324ffd5e14a8a13df4d_l-5220570-images-thumbs&n=13" alt="Логотип">
+    <h1>Киберспортивный турнир</h1>
+    <nav>
+        <a href="#info">О турнире</a> |
+        <a href="#table">Результаты</a>
+    </nav>
+</header>
+
+<section id="info">
+    <h2>О турнире</h2>
+    <p><b>Киберспорт</b> — это соревнования среди игроков в видеоигры. Наш турнир собирает лучших участников, готовых бороться за чемпионский титул.</p>
+    <img src="https://pp.userapi.com/c845221/v845221627/20c25/s80F8GKGTek.jpg" alt="Турнир">
+</section>
+
+<section id="table">
+    <h2>Результаты матчей</h2>
+    <table>
+        <tr>
+            <th>Игра</th>
+            <th>Команда 1</th>
+            <th>Команда 2</th>
+            <th>Дата</th>
+            <th>Счёт</th>
+        </tr>
+        <tr>
+            <td>Warface</td>
+            <td><img src="team1.png" alt="Legion"> Legion</td>
+            <td><img src="team2.png" alt="Fire Win"> Fire Master</td>
+            <td>21.04.2020</td>
+            <td>0 : 0</td>
+        </tr>
+    </table>
+</section>
+
+<section id="contact">
+    <h2>Обратная связь</h2>
+    <form>
+        <label>Ваше имя:</label>
+        <input type="text" name="name">
+        
+        <label>Ваш отзыв:</label>
+        <textarea name="review"></textarea>
+        
+        <button type="submit">Отправить</button>
+    </form>
+</section>
+
+<footer>
+    <p>Контакты: г. Москва, ул. Геймерская, д. 1 | Телефон: +7 (900) 000-00-00</p>
+    <a href="https://vk.com" target="_blank">
+        <img src="vk_logo.png" alt="VK">
+    </a>
+</footer>
+
+</body>
+</html>
