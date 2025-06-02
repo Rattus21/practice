@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Design 24/7</title>
+
+    <style>
+        body {
+            background: darkblue;
+            color: black;
+            margin: 0;
+            padding-top: 80px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        .banner {
+            width: 90vw;
+            height: 80px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .brush-stroke {
+            width: 200px;
+            height: 60px;
+            background: url('brush.png') no-repeat center/cover;
+            position: absolute;
+            left: 120px;
+        }
+
+        .penguin-icon {
+            width: 80px;
+            height: 80px;
+        }
+
+        .wrapper {
+            background: white;
+            padding: 80px;
+            border-radius: 10px;
+            width: 85vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            height: 420px;
+        }
+
+        .info-container {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            text-align: left;
+        }
+
+        .center-image img {
+            width: 1000%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 50 auto;
+        }
+
+        .highlight-text {
+            color: darkblue;
+            font-weight: bold;
+        }
+
+        .icons-below {
+            display: flex;
+            gap: 10px;
+            width: 85vw;
+            margin-top: 10px;
+            justify-content: flex-start;
+        }
+
+        .icons-below img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+
+        h1 {
+            margin: 0;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="banner">
+        <img src="https://cdn3.iconfinder.com/data/icons/christmas-cheer/128/penguin-256.png" class="penguin-icon">
+        <div class="brush-stroke"></div>
+    </div>
+
+    <!-- Заголовок по центру -->
+    <div class="title-container">
+        <h1>Design 24/7 😀</h1>
+    </div>
+
+    <div class="wrapper">
+        <div class="info-container">
+            <p><strong class="highlight-text">Дизайнер, рисую для сайтов:</strong></p>
+            <p class="highlight-text">✅ Логотипы</p>
+            <p class="highlight-text">✅ Иконки</p>
+            <p class="highlight-text">✅ Коллажи</p>
+        </div>
+
+        <div class="center-image">
+           <img src="https://wallpapers.com/images/hd/abstract-ink-splatter-graphic-57cbztp470a1azll.png" >
+        </div>
+    </div>
+
+    <div class="icons-below">
+        <img src="https://i.pinimg.com/originals/b5/c2/a4/b5c2a4bfe9ac3b36dba810dafaadd623.jpg">
+        <img src="https://avatars.mds.yandex.net/i?id=67d9eb01715e49fd2f70914e58adc9aa-4256731-images-thumbs&n=13">
+    </div>
+
+</body>
+</html>
