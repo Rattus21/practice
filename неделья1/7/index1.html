@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Computer Market</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,600" rel="stylesheet" />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Inter", Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        background-color: #fdfdfd;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: #fdfdfdfe;
+      }
+
+      .header {
+        background-color: #f0d9b5;
+        padding: 10px;
+        text-align: left;
+      }
+
+      .header__promo {
+        font-size: 14px;
+        color: #705d48;
+        margin: 0;
+      }
+
+      .main {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 20px;
+      }
+
+      .main__title {
+        font-size: 36px;
+        font-weight: 600;
+        color: #2e2c2e;
+        margin-bottom: 10px;
+        align-self: center;
+        width: 100%;
+        text-align: center;
+      }
+
+      .main__promo {
+        font-size: 14px;
+        color: #868588;
+        margin-bottom: 20px;
+        text-align: left;
+        align-self: flex-start;
+      }
+
+      .products {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+      }
+
+      .products__item {
+        width: 60px;
+        height: auto;
+      }
+
+      .footer {
+        background-color: #e9967a;
+        padding: 10px;
+        color: #fff;
+      }
+
+      .footer__title {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .footer__address,
+      .footer__phone {
+        font-size: 14px;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <p class="header__promo">Сделай покупку до нового года, получи подарок!</p>
+      </header>
+      <main class="main">
+        <h1 class="main__title">Computer Market</h1>
+        <p class="main__promo">Решили приобрести компьютер или планшет? Торопитесь, в декабре у нас скидки!</p>
+        <div class="products">
+          <img class="products__item" src="https://c.animaapp.com/s8WUghK3/img/image-6@2x.png" alt="Smartphone" />
+          <img class="products__item" src="https://c.animaapp.com/s8WUghK3/img/image-5@2x.png" alt="Laptop" />
+          <img class="products__item" src="https://c.animaapp.com/s8WUghK3/img/image-3@2x.png" alt="Tablet" />
+          <img class="products__item" src="https://c.animaapp.com/s8WUghK3/img/image-2@2x.png" alt="Accessories" />
+          <img class="products__item" src="https://c.animaapp.com/s8WUghK3/img/image-1@2x.png" alt="Headphones" />
+        </div>
+      </main>
+      <footer class="footer">
+        <h2 class="footer__title">Контакты</h2>
+        <p class="footer__address">Адрес: г Техноград, ул. Дисплейная, 15</p>
+        <p class="footer__phone">Тел. 8895-6341</p>
+      </footer>
+    </div>
+  </body>
+</html>
