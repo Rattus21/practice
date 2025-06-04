@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя семья – мой космос</title>
+    <style>
+        :root {
+            --primary: #4e54c8;
+            --secondary: #8f94fb;
+            --dark-bg: #121212;
+            --dark-card: #1e1e1e;
+            --dark-text: #f0f0f0;
+            --light-bg: #f8f9fa;
+            --light-card: #ffffff;
+            --light-text: #333333;
+            --accent: #ff6b6b;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            transition: var(--transition);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.light-theme {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            margin-right: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--dark-text);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .light-theme .logo-icon::before {
+            background-color: var(--light-text);
+        }
+
+        header {
+            background-color: rgba(30, 30, 30, 0.95);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 5%;
+        }
+
+        .light-theme header {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            background-color: var(--dark-card);
+            color: var(--dark-text);
+            font-size: 1.2rem;
+        }
+
+        .light-theme .theme-toggle {
+            background-color: var(--light-card);
+            color: var(--light-text);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: inherit;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .competition-details {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            background-color: var(--dark-card);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .light-theme .competition-details {
+            background-color: var(--light-card);
+        }
+
+        .competition-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .competition-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .competition-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .competition-description {
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .competition-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+        }
+
+        .light-theme .info-card {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .info-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-size: 1.3rem;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .light-theme .info-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .info-label {
+            font-weight: 500;
+        }
+
+        .info-value {
+            text-align: right;
+        }
+
+        .participants-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .light-theme .participants-section {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 1.5rem;
+        }
+
+        .rating-value {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .participants-count {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-large {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: var(--dark-card);
+            padding: 50px 5% 30px;
+            color: var(--dark-text);
+        }
+
+        .light-theme footer {
+            background-color: var(--light-card);
+            color: var(--light-text);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-contacts {
+            margin-bottom: 20px;
+        }
+
+        .footer-contacts a {
+            display: block;
+            margin-bottom: 10px;
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-contacts a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-nav h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+        }
+
+        .footer-nav li {
+            margin-bottom: 10px;
+        }
+
+        .footer-nav a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .light-theme .copyright {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            color: rgba(0,0,0,0.6);
+        }
+
+        @media (max-width: 1200px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .competition-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .participants-section {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .competition-title {
+                font-size: 2rem;
+            }
+            
+            .competition-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                <span>Моя семья – мой космос</span>
+            </a>
+            
+            <button class="hamburger">☰</button>
+            
+            <ul class="nav-menu">
+                <li><a href="registration.html">Регистрация</a></li>
+                <li><a href="#auth">Авторизация</a></li>
+                <li><a href="account.html">Личный кабинет</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#competitions">Конкурсы</a></li>
+                <li><a href="#search">Поиск</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+            
+            <button class="theme-toggle">🌙</button>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="competition-details">
+                <div class="competition-header">
+                    <h1 class="competition-title">Космический рисунок</h1>
+                    <img src="https://kuda-mo.ru/uploads/73aa031a1736533615111f2ae1e2d664.jpeg">
+                    <h2 class="competition-subtitle">Описание конкурса</h2>
+                </div>
+                
+                <div class="competition-description">
+                    <p>Конкурс "Космический рисунок" - это прекрасная возможность для всей семьи проявить свои творческие способности и вместе создать уникальное произведение искусства. Нарисуйте свою версию космоса: это может быть наша солнечная система, далекие планеты, космические корабли или фантастические миры - все, что подскажет ваше воображение!</p>
+                    
+                    <p>Мы приветствуем любые техники исполнения: акварель, гуашь, карандаши, фломастеры или даже цифровое искусство. Главное - чтобы работа была выполнена совместно всеми членами семьи. Для участия необходимо загрузить фотографию вашего рисунка через личный кабинет и добавить краткое описание работы.</p>
+                    
+                    <p>Конкурс проводится в трех возрастных категориях: 3-6 лет, 7-12 лет и 13+. Победители будут определяться по следующим критериям: оригинальность, идея, качество исполнения, совместное участие всех членов семьи. Лучшие работы будут выставлены на нашей онлайн-галерее и получат призы от наших партнеров.</p>
+                </div>
+                
+                <div class="competition-info-grid">
+                    <div class="info-card">
+                        <h3>Информация о конкурсе</h3>
+                        <div class="info-item">
+                            <span class="info-label">Дата проведения</span>
+                            <span class="info-value">8 июля 2024 года</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Время</span>
+                            <span class="info-value">10:00 - 18:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Место</span>
+                            <span class="info-value">Онлайн</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Условия участия</h3>
+                        <div class="info-item">
+                            <span class="info-label">Возрастные группы</span>
+                            <span class="info-value">3-6 лет, 7-12 лет, 13+</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Стоимость</span>
+                            <span class="info-value">Бесплатно</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Формат</span>
+                            <span class="info-value">Семейное участие</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="participants-section">
+                    <div class="rating">
+                        <span class="stars">★★★☆</span>
+                        <span class="rating-value">4.05</span>
+                    </div>
+                    <div class="participants-count">124 семьи участвуют</div>
+                </div>
+                
+                <button class="btn btn-large">Участвовать</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <a href="index.html" class="footer-logo">
+                    <div class="logo-icon"></div>
+                    <span>Моя семья – мой космос</span>
+                </a>
+                <div class="footer-contacts">
+                    <a href="tel:+74842234567">+7 (4842) 23-45-67</a>
+                    <a href="mailto:family@cosmos.ru">family@cosmos.ru</a>
+                </div>
+                <p>Создаем пространство для семейного творчества с 2015 года</p>
+            </div>
+            
+            <div class="footer-nav">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index-light.html">Главная (светлая)</a></li>
+                    <li><a href="registration.html">Регистрация</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-nav">
+                <h3>Конкурсы</h3>
+                <ul>
+                    <li><a href="schedule.html">Расписание</a></li>
+                    <li><a href="competition.html">Описание конкурса</a></li>
+                    <li><a href="account.html">Личный кабинет</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-nav">
+                <h3>Помощь</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Правила участия</a></li>
+                    <li><a href="404.html">Страница не найдена</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2023 "Моя семья – мой космос". Все права защищены.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const body = document.body;
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.className = savedTheme;
+                updateToggleIcon();
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                if (body.classList.contains('dark-theme')) {
+                    body.classList.remove('dark-theme');
+                    body.classList.add('light-theme');
+                    localStorage.setItem('theme', 'light-theme');
+                } else {
+                    body.classList.remove('light-theme');
+                    body.classList.add('dark-theme');
+                    localStorage.setItem('theme', 'dark-theme');
+                }
+                updateToggleIcon();
+            });
+            
+            function updateToggleIcon() {
+                if (body.classList.contains('dark-theme')) {
+                    themeToggle.textContent = '🌙';
+                } else {
+                    themeToggle.textContent = '☀️';
+                }
+            }
+            
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

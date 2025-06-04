@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена | Моя семья – мой космос</title>
+    <style>
+        /* Глобальные стили и переменные */
+        :root {
+            --primary: #4e54c8;
+            --secondary: #8f94fb;
+            --dark-bg: #121212;
+            --dark-card: #1e1e1e;
+            --dark-text: #f0f0f0;
+            --light-bg: #f8f9fa;
+            --light-card: #ffffff;
+            --light-text: #333333;
+            --accent: #ff6b6b;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            transition: var(--transition);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.light-theme {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        /* Логотип */
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            margin-right: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--dark-text);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .light-theme .logo-icon::before {
+            background-color: var(--light-text);
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: rgba(30, 30, 30, 0.95);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 5%;
+        }
+
+        .light-theme header {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            background-color: var(--dark-card);
+            color: var(--dark-text);
+            font-size: 1.2rem;
+        }
+
+        .light-theme .theme-toggle {
+            background-color: var(--light-card);
+            color: var(--light-text);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: inherit;
+        }
+
+        /* Основной контент */
+        main {
+            flex: 1;
+            padding: 40px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Стили для страницы 404 */
+        .not-found-container {
+            text-align: center;
+            max-width: 800px;
+            padding: 50px;
+            background-color: var(--dark-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .light-theme .not-found-container {
+            background-color: var(--light-card);
+        }
+
+        .not-found-title {
+            font-size: 10rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .not-found-subtitle {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .not-found-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .space-animation {
+            margin: 40px auto;
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .planet {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 30px rgba(78, 84, 200, 0.5);
+        }
+
+        .rocket {
+            position: absolute;
+            font-size: 3rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            animation: float 4s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) rotate(-45deg) translate(0, 0); }
+            50% { transform: translate(-50%, -50%) rotate(-45deg) translate(30px, -30px); }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Подвал сайта */
+        footer {
+            background-color: var(--dark-card);
+            padding: 50px 5% 30px;
+            color: var(--dark-text);
+        }
+
+        .light-theme footer {
+            background-color: var(--light-card);
+            color: var(--light-text);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-contacts {
+            margin-bottom: 20px;
+        }
+
+        .footer-contacts a {
+            display: block;
+            margin-bottom: 10px;
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-contacts a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-nav h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+        }
+
+        .footer-nav li {
+            margin-bottom: 10px;
+        }
+
+        .footer-nav a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .light-theme .copyright {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            color: rgba(0,0,0,0.6);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .not-found-title {
+                font-size: 8rem;
+            }
+            
+            .not-found-subtitle {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .not-found-title {
+                font-size: 6rem;
+            }
+            
+            .not-found-subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .not-found-description {
+                font-size: 1rem;
+            }
+            
+            .space-animation {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .not-found-title {
+                font-size: 5rem;
+            }
+            
+            .not-found-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .not-found-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                <span>Моя семья – мой космос</span>
+            </a>
+            
+            <button class="hamburger">☰</button>
+            
+            <ul class="nav-menu">
+                <li><a href="registration.html">Регистрация</a></li>
+                <li><a href="#auth">Авторизация</a></li>
+                <li><a href="account.html">Личный кабинет</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#competitions">Конкурсы</a></li>
+                <li><a href="#search">Поиск</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+            
+            <button class="theme-toggle">🌙</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="not-found-container">
+            <div class="not-found-title">404</div>
+            <div class="space-animation">
+                <div class="planet"></div>
+                <div class="rocket">🚀</div>
+            </div>
+            <h2 class="not-found-subtitle">Страница не найдена</h2>
+            <p class="not-found-description">
+                К сожалению, запрашиваемая вами страница не существует или была перемещена. 
+                Возможно, вы ошиблись при вводе адреса или перешли по неработающей ссылке.
+            </p>
+            <a href="index.html" class="btn">Вернуться на главную</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <a href="index.html" class="footer-logo">
+                    <div class="logo-icon"></div>
+                    <span>Моя семья – мой космос</span>
+                </a>
+                <div class="footer-contacts">
+                    <a href="tel:+74842234567">+7 (4842) 23-45-67</a>
+                    <a href="mailto:family@cosmos.ru">family@cosmos.ru</a>
+                </div>
+                <p>Создаем пространство для семейного творчества с 2015 года</p>
+            </div>
+            
+            <div class="footer-nav">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index-light.html">Главная (светлая)</a></li>
+                    <li><a href="registration.html">Регистрация</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-nav">
+                <h3>Конкурсы</h3>
+                <ul>
+                    <li><a href="schedule.html">Расписание</a></li>
+                    <li><a href="competition.html">Описание конкурса</a></li>
+                    <li><a href="account.html">Личный кабинет</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-nav">
+                <h3>Помощь</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Правила участия</a></li>
+                    <li><a href="404.html">Страница не найдена</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2023 "Моя семья – мой космос". Все права защищены.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const body = document.body;
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            // Проверяем сохраненную тему
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.className = savedTheme;
+                updateToggleIcon();
+            }
+            
+            // Обработчик клика по переключателю
+            themeToggle.addEventListener('click', function() {
+                if (body.classList.contains('dark-theme')) {
+                    body.classList.remove('dark-theme');
+                    body.classList.add('light-theme');
+                    localStorage.setItem('theme', 'light-theme');
+                } else {
+                    body.classList.remove('light-theme');
+                    body.classList.add('dark-theme');
+                    localStorage.setItem('theme', 'dark-theme');
+                }
+                updateToggleIcon();
+            });
+            
+            // Обновление иконки переключателя
+            function updateToggleIcon() {
+                if (body.classList.contains('dark-theme')) {
+                    themeToggle.textContent = '🌙';
+                } else {
+                    themeToggle.textContent = '☀️';
+                }
+            }
+            
+            // Обработчик для мобильного меню
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Закрытие меню при клике на ссылку
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
