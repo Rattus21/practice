@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Моя семья – мой космос</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                <span>Семейный Космос</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="registration.html" class="nav-link">Регистрация</a></li>
+                <li class="nav-item"><a href="index.html#auth" class="nav-link">Авторизация</a></li>
+                <li class="nav-item"><a href="account.html" class="nav-link active">Личный кабинет</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">О нас</a></li>
+                <li class="nav-item"><a href="index.html#contests" class="nav-link">Конкурсы</a></li>
+                <li class="nav-item"><a href="schedule.html" class="nav-link">Расписание</a></li>
+                <li class="nav-item"><a href="#footer" class="nav-link">Контакты</a></li>
+                <li class="nav-item">
+                    <button class="theme-toggle" title="Переключить тему">🌙</button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Личный кабинет -->
+    <section class="account-section">
+        <div class="container">
+            <div class="account-container">
+                <div class="account-sidebar">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Аватар пользователя">
+                        </div>
+                        <div class="user-info">
+                            <h3 class="user-name">Семья Петровых</h3>
+                            <p class="user-email">petrovy@example.com</p>
+                            <div class="user-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">4</span>
+                                    <span class="stat-label">Конкурса</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">12</span>
+                                    <span class="stat-label">Баллов</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <nav class="account-nav">
+                        <ul>
+                            <li><a href="#profile" class="active"><i class="fas fa-user"></i> Профиль</a></li>
+                            <li><a href="#contests"><i class="fas fa-trophy"></i> Мои конкурсы</a></li>
+                            <li><a href="#schedule"><i class="fas fa-calendar"></i> Расписание</a></li>
+                            <li><a href="#results"><i class="fas fa-chart-line"></i> Результаты</a></li>
+                            <li><a href="#settings"><i class="fas fa-cog"></i> Настройки</a></li>
+                            <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Выйти</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <div class="account-content">
+                    <div id="profile" class="account-tab active">
+                        <h2 class="section-title">Профиль семьи</h2>
+                        <form class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="family-name">Фамилия семьи</label>
+                                    <input type="text" id="family-name" value="Петровы" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="family-size">Количество членов семьи</label>
+                                    <input type="number" id="family-size" min="1" max="10" value="4" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="family-description">О нашей семье</label>
+                                <textarea id="family-description" rows="4">Мы дружная семья из 4 человек: мама, папа и двое детей. Любим вместе творить, участвовать в конкурсах и открывать новое!</textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Фото семьи</label>
+                                <div class="photo-upload">
+                                    <div class="upload-preview">
+                                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Фото семьи">
+                                    </div>
+                                    <div class="upload-controls">
+                                        <button type="button" class="btn btn-outline">Загрузить фото</button>
+                                        <p>Рекомендуемый размер: 1000x600 пикселей</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-buttons">
+                                <button type="submit" class="btn">Сохранить изменения</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div id="contests" class="account-tab">
+                        <h2 class="section-title">Мои конкурсы</h2>
+                        <div class="user-contests">
+                            <div class="contest-item">
+                                <div class="contest-info">
+                                    <h3 class="contest-title">Космический Костюм</h3>
+                                    <div class="contest-status active">Активный</div>
+                                    <div class="contest-progress">
+                                        <div class="progress-bar" style="width: 75%"></div>
+                                        <span>75% выполнено</span>
+                                    </div>
+                                </div>
+                                <div class="contest-actions">
+                                    <a href="competition.html" class="btn btn-outline">Продолжить</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contest-item">
+                                <div class="contest-info">
+                                    <h3 class="contest-title">Галактическая Кулинария</h3>
+                                    <div class="contest-status completed">Завершен</div>
+                                    <div class="contest-result">
+                                        <span>Итоговый балл: 92/100</span>
+                                        <span>Место: 3 из 24</span>
+                                    </div>
+                                </div>
+                                <div class="contest-actions">
+                                    <a href="competition.html" class="btn btn-outline">Посмотреть результаты</a>
+                                </div>
+                            </div>
+                            
+                            <!-- ... другие конкурсы ... -->
+                        </div>
+                    </div>
+                    
+                    <!-- ... другие вкладки ... -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer id="footer">
+        <!-- Тот же футер, что и на главной -->
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>

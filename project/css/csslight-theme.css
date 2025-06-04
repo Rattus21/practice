@@ -1,0 +1,38 @@
+/* Светлая тема */
+body.light-theme {
+    --text: #1e272e;
+    --bg-dark: #f5f6fa;
+    --bg-darker: #dcdde1;
+    --card-bg: #ffffff;
+}
+
+body.light-theme .hero {
+    background: linear-gradient(rgba(245, 246, 250, 0.8), rgba(245, 246, 250, 0.8)), 
+                url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+}
+
+body.light-theme .star {
+    background: #1e272e;
+}
+
+body.light-theme .nav-link:hover,
+body.light-theme .nav-link.active {
+    background: rgba(108, 92, 231, 0.1);
+}
+
+body.light-theme .theme-toggle {
+    color: #1e272e;
+}
+
+body.light-theme .theme-toggle:hover {
+    color: var(--accent);
+}
+
+/* Адаптация других элементов для светлой темы */
+body.light-theme .contest-card,
+body.light-theme .auth-container,
+body.light-theme .slide-content,
+body.light-theme .testimonial,
+body.light-theme .search-input {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
